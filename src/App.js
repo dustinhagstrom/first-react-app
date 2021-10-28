@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import Counter from './Counter';
-import Header from './components/Header';
-import { useEffect, useState } from 'react';
-import { fetchData } from './fakeDb';
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import UserContextProvider from "./context/userContext";
+// 1. Create the context. (export this context)
+// 2. Give the context the Provider component.
+//    Wrap the components that you want to allow access
+//    to the data passed to provider as a value prop.
+// 3. pass the data as an object to the provider as a value prop.
+// 4. Use the data that was passed to context (import into appropriate file)
+// 5.
 
 function App() {
-  const [userData, setUserData] = useState();
-
-  useEffect(() => {
-    fetchData().then(response => setUserData(response));
-  }, []);
-
-  console.log('userData: ', userData);
-
   return (
-    <div className="App">
-      {/* <Counter /> */}
-      <Header />
-    </div>
+    <UserContextProvider randomProp="randomData">
+      <div className="App">
+        <Header />
+        <Footer />
+      </div>
+    </UserContextProvider>
   );
 }
 

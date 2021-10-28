@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { useUserData } from "../context/userContext";
 
 const UserInfoComponent = () => {
-  // were gonna change this later to use mock data
-  const userData = undefined;
+  const { userData } = useUserData();
 
-  if(!userData){
-    return 'not log in'
+  if (!userData) {
+    return "not logged in";
   }
 
-  return userData.name;
-}
+  return "hi, " + userData.name;
+};
 
 export default UserInfoComponent;
